@@ -11,4 +11,4 @@ for i in range(len(palabra)):
 if nuevaPalabra == palabra:
     print("La palabra :", palabra, " es igual a la palabra ", nuevaPalabra)
 else:
-    print("La palabra :", palabra, " es distinta a la palabra ", nuevaPalabra)
+    print("La palabra :", palabra, " es distinta a la palabra ", nuevaPalabra) asd
