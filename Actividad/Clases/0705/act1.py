@@ -32,4 +32,3 @@ if (respuesta_decil == 1 or respuesta_decil == 2 or respuesta_decil == 3):
     if nota_total_medio >= 6.0:
         bono + 30000
 print("Su monto asignado es:", dinero + bono)
-
