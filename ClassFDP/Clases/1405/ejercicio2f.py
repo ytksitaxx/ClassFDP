@@ -1,46 +1,38 @@
-def calculadora_beneficios():
-    valorbase_arancel = 1800000
-    valorbase_matricula = 90000
-    
-    try:
-        while True:
-            try:
-                promedio_estudiante = float(input("Ingresa el promedio final con el que egresaste del colegio o liceo: "))
-                quintil_estudiante = int(input("Ingresa el quintil socioeconomico al que pertenece tu grupo familiar: "))
-                if 0 <= promedio_estudiante <= 7.0 and 1 <= quintil_estudiante <= 5:
-                    break
-                else:
-                    print("Datos no validos, intenta nuevamente")
-            except ValueError:
-                print("Ingresa un numero valido")
-        
-        # Descuento Arancel
-        descuento_arancel = 0
-        if promedio_estudiante > 6.0:
-            if quintil_estudiante in[1,2]:
-                descuento_arancel = 0.20
-            elif quintil_estudiante in[3,4]:
-                descuento_arancel = 0.15
-        elif promedio_estudiante > 5.0:
-            if quintil_estudiante in[1,2]:
-                descuento_arancel = 0.13
-            elif quintil_estudiante in[3,4]:
-                descuento_arancel = 0.10
-        
-        # Descuento Matricula
-        descuento_matricula = 0
-        if quintil_estudiante in[1,2,3]:
-            descuento_matricula = 0.10
-        if promedio_estudiante > 5.5:
-            descuento_matricula += 0.05
-        
-        # Valores Finales
-        valorfinal_arancel = valorbase_arancel*(1 - descuento_arancel)
-        valorfinal_matricula = valorbase_matricula*(1 - descuento_matricula)
-        print("-----RESULTADOS-----")
-        print("Valor Final Arancel:", valorfinal_arancel)
-        print("Valor Final Matricula:", valorfinal_matricula)
-    except ValueError:
-        print("Datos no validos")
+import random
 
-calculadora_beneficios()
+def juego_adivinanza():
+    print("--Bienvenido usuario al juego de adivinanza--")
+    print("A continuacion ingresa dos numeros que representen el limite del numero aleatorio")
+    while True:
+        try:
+            limite_inferior = int(input("Ingresa el limite inferior: "))
+            limite_superior = int(input("Ingresa el limite superior: "))
+            if limite_inferior < limite_superior:
+                break
+            else:
+                print("El numero inferior debe ser menor al superior, intente nuevamente")
+        except ValueError:
+            print("Ingresa un dato valido")
+
+    # Generar numero aleatorio
+    numero_aleatorio = random.randint(limite_inferior,limite_superior)
+    print("Se ha generado un numero aleatorio entre el", limite_inferior,"y", limite_superior)
+
+    # Intentos del usuario
+    for intento in range(1,4):
+        try:
+            respuesta = int(input("Intento N°", intento,"Ingresa tu numero"))
+            if respuesta == numero_aleatorio:
+                print("Felicidades acertaste el numero")
+            elif respuesta < numero_aleatorio:
+                print("El numero aleatorio es MAYOR")
+            else:
+                print("El numero aleatorio es MENOR")
+            
+            if intento == 2:
+                print()
+        except ValueError:
+            print("Ingresa un dato valido")
+    print("Fallaste.. el numero correcto era:", numero_aleatorio)
+
+juego_adivinanza()
