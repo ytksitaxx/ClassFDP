@@ -14,9 +14,13 @@ def esPrimo():
     
     # Ingreso de datos
     for i in range(numeroU):
-        while numero < 1:
+        while True:
             try:
                 numero = int(input("Ingresa el numero: "))
+                if numero > 1:
+                    break
+                else:
+                    print("Por favor ingresa un numero mayor a 1")
             except ValueError:
                 print("Por favor ingresa un numero entero")
         if numero % 2 != 0:
@@ -36,4 +40,5 @@ def esPrimo():
     print("-----RESULTADOS-----")
     print("Total numero primos:", primos)
     print("Total no primos:", noPrimos)
+
 esPrimo()
